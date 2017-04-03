@@ -1,5 +1,3 @@
-<html><title>Sleuth Simulator</title></html>
-
 # Introduction
 
 This website contains information about a Simulator of the logical deduction card-game Sleuth. This is a project for the Multi-Agent Systems course of 2016/2017, made by Richard Elderman & Cor Steging. <br> <br>
@@ -50,3 +48,6 @@ Clicking [**this link**](http://gofile.me/2T0QB/EvVDJpoBR) will bring you to a p
 When you start the simulator, a Graphical User Interface like the one shown above will display the current information about the game. On the bottom left, the avatar of the current player is displayed along with his Gem-Cards on the bottom. On the left side of this avatar, his or her question cards are displayed. Both the Gem-Cards and the Question-Cards are represented in the following way: The color of the card represents the color of the gem (white indicates no color is specified), the letters indicate the type of gem (Diamond, Opal or Pearl) and the number indicates the quantity (Solitaire, Pair or Cluster). The free choice Question-Cards are represented by a question mark.<br><br>
 On the right of the avatar of the current player, the score sheet of this player is shown. The score sheet is used to mark off all of the gems that the player knows are not the hidden gem. Below this score sheet, we can see the knowledge base of the current player containing all of the knowledge as described in the model section. The dialogue box, all the way on the right of the screen, displays all of the dialogue between the players. The button underneath the dialogue box is used to move to the next stage of the game.<br><br>
 Additionally, the avatars of the other players, whose turn it currently is not, are shown on the top of the interface. Underneath each of the avatars is a button that will display the knowledge base (KB) of the respective player. On the left of each player, his or her Gem-Cards are shown from the perspective of the current player.<br>
+
+<html><title>Sleuth Simulator</title></html>
+

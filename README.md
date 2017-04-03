@@ -18,8 +18,21 @@ Each player has a set of knowledge about the world, which we refer to as the kno
 
 The agents are also able to use higher-level knowledge, which is knowledge about knowledge. For example, Player 1 can know that Players 2 knows that the Red Diamond Solitaire is in the game: K<sub>1</sub>(K<sub>2</sub>(RDS)). More importantly, as will be discussed in the next section about the reasoning of the agents, this makes it possible for players to know that another player does not know a particular Gem-Card.
 
-Additionally, all of the cards that the player does not know for certain, he or she holds for possible. This is represented as, for instance, M<sub>1</sub>(RDS), which states that Player 1 holds it for possible that the Red Diamond Solitaire is in the game, but it might also be the hidden gem. 
+Additionally, all of the cards that the player does not know for certain, he or she holds for possible. This is represented as, for instance, M<sub>1</sub>(RDS), which states that Player 1 holds it for possible that the Red Diamond Solitaire is in the game, but it might also be the hidden gem.
 
+### Agents
+The agents make use of a number of reasoning strategies in the simulation. The reasoning can be divided into three types: reasoning about what the hidden gem might be, reasoning about what Question-Card to use and who to ask the question to, and the inference of new knowledge based on previous information.
+
+1. Finding the hidden gem:
+ There are two ways for the agent to know what the hidden gem is. The first, and most obvious way is to know all of the other cards that are in the game. If the agent knows all of the cards that are in the game, it will only hold one card for possible, which is the hidden gem.
+ Another way for the agent to figure out what the hidden gem is, is to go through all of the cards it holds for possible and check whether the other agents know about these cards. If there is a card that the agent holds for possible and the agent knows that none of the other agents know about the card, it must be the hidden gem. 
+2. Asking Questions:
+ Selecting the best question consists of finding the best possible combination of a Question-Card and a player to ask the question to. The main strategy that the agents use is to select a Question-Card and player such that it maximizes the potential gain of knowledge. The agent will determine a score for each Question-Card and player combination, based on how much new potential knowledge this combination can yield. For example, if the agent does not know a lot of Red Gem-Cards yet, and he also has little knowledge about the Gem-Cards of Player 2, this combination of asking Player 2 about his or her Red cards has a high value.
+ Another reason for selecting a Question-Card and player is to follow a lead. If a particular Gem-Card is still unknown by the agent, and it knows that a couple of other players do not know the card either, there is a good chance that this Gem-Card is the hidden gem. Therefore the agent can decide to follow this lead by asking the players that could posses the card a question that would reveal whether or not they have it. If they don't, the card must be the hidden gem. \\
+3. Inferring new knowledge
+  ...
+  
+  
 You can use the [editor on GitHub](https://github.com/RichardElderman/Sleuth/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
 
 Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.

@@ -1,4 +1,4 @@
-![Sleuth](sleuth.png)
+<center>![Sleuth](sleuth.png)</center>
 
 
 # Introduction

@@ -1,3 +1,6 @@
+![Sleuth](sleuth.png)
+
+
 # Introduction
 
 This website contains information about a Simulator of the logical deduction card-game Sleuth. This is a project for the Multi-Agent Systems course of 2016/2017, made by Richard Elderman & Cor Steging. <br> <br>

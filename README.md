@@ -1,4 +1,4 @@
-<html><title>Sleuth Simulator</title></html>
+<!-- <title>Sleuth Simulator</title></html> -->
 
 # Introduction
 

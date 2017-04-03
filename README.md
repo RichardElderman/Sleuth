@@ -1,6 +1,6 @@
 # Introduction
 
-This website contains information about a Simulator of the logical deduction card-game Sleuth. This is a project for the Multi-Agent Systems course of 2016/2017. <br>
+This website contains information about a Simulator of the logical deduction card-game Sleuth. This is a project for the Multi-Agent Systems course of 2016/2017, made by Richard Elderman & Cor Steging. <br>
 The application that we wrote can simulate a game of Sleuth with five AI Agents that play the game. The model of the game is based on S5<sub>(m)</sub> logic system and the agents will use their knowledge about the world and the knowledge of other agents to make decisions and win the game. The goal of this simulation is to show how the knowledge of the agents lead to the decisions that they make and how they use the information to alter their strategy. 
 
 ## The Game of Sleuth
@@ -18,14 +18,19 @@ Additionally, all of the cards that the player does not know for certain, he or 
 The agents make use of a number of reasoning strategies in the simulation. The reasoning can be divided into three types: reasoning about what the hidden gem might be, reasoning about what Question-Card to use and who to ask the question to, and the inference of new knowledge based on previous information.
 
 ### Finding the hidden gem:<br>
- There are two ways for the agent to know what the hidden gem is. The first, and most obvious way is to know all of the other cards that are in the game. If the agent knows all of the cards that are in the game, it will only hold one card for possible, which is the hidden gem.<br>
+ There are two ways for the agent to know what the hidden gem is. The first, and most obvious way is to know all the cards that are in the game. If the agent knows all of the cards that are in the game, it will only hold one card for possible, which is the hidden gem.<br>
  Another way for the agent to figure out what the hidden gem is, is to go through all of the cards it holds for possible and check whether the other agents know about these cards. If there is a card that the agent holds for possible and the agent knows that none of the other agents know about the card, it must be the hidden gem. 
 
 ### Asking Questions:
  Selecting the best question consists of finding the best possible combination of a Question-Card and a player to ask the question to. The main strategy that the agents use is to select a Question-Card and player such that it maximizes the potential gain of knowledge. The agent will determine a score for each Question-Card and player combination, based on how much new potential knowledge this combination can yield. For example, if the agent does not know a lot of Red Gem-Cards yet and he also has little knowledge about the Gem-Cards of Player 2, this combination of asking Player 2 about his or her Red cards has a high value.<br>
  Another reason for selecting a Question-Card and player is to follow a lead. If a particular Gem-Card is still unknown by the agent, and it knows that a couple of other players do not know the card either, there is a good chance that this Gem-Card is the hidden gem. Therefore the agent can decide to follow this lead by asking the players that could posses the card a question that would reveal whether or not they have it. If they don't, the card must be the hidden gem.
 
-### Inferring new knowledge<br>
+### Inferring knowledge from answers
+The agent _a_ that asked a player _p_ a question, gets a list back of all Gem-Cards that player _p_ knows that meet the description in the question. The agent can use this list to determine which cards player _p_  has, which are the ones that are included in the list, and which cards player _p_ does not have, which are the cards meeting the description of the question that are not included in the list. In the former case, for each card X included in the list a statement K<sub>a</sub>(K<sub>p</sub>(X)) is added to the knowledge base. In the latter case, for each card X meeting the description but not included in the list a statement K<sub>a</sub>(&#172;K<sub>p</sub>(X)) is added to the knowledge base.<br>
+Moreover, for the cards included in the list, agent _a_ can conclude that since player _p_ owns the cards in the list, these cards are not in the hand of the other players. So for each player _p'_, which is every player except _p_ and _a_, for each card X included in the list a statement K<sub>a</sub>(&#172;K<sub>p'</sub>(X)) is added to the knowledge base. Every player in the game uses this at the start of the game for his own cards: he adds statements to his knowledge base about all other players not having the Gem-Cards he has himself. <br>
+If a statement is already included in the knowledge base, it does not need to be added again. It is also checked if an added statement does not introduce a conflict with an already included statement (which if everything goes right will never happen).
+
+### Inferring extra knowledge<br>
   An agent _a_ can infer new knowledge from its current knowledge in two different ways. This can occur after the agent has asked a question and received an answer, and thus has some new knowledge, which it can use to infer more knowledge at the end of its turn. This additional knowledge could potentially lead the agent to discover the hidden gem.<br>
  Both ways of inferring new knowledge make use of the fact that each player has exactly 7 cards in his hand. With the use of the knowledge the agent has about a player, he can make three exhaustive lists of Gem-Cards for each player _p_:
  - a list containing all Gem-Cards of which agent _a_ knows that player _p_ has them
@@ -33,7 +38,8 @@ The agents make use of a number of reasoning strategies in the simulation. The r
  - a list containing all Gem-Cards of which agent _a_ does not know whether player _p_ has them, but _p_ could have them. <br>
  
  The first type of inference can be made if the first list contains 7 Gem-Cards. This means that agent _a_ knows all of the Gem-Cards that player _p_ has, and that none of the cards in list three (the possible cards) can in fact be owned by player _p_. Therefore he can transfer every card X from the third list to the second list, by adding K<sub>a</sub>(&#172;K<sub>p</sub>(X)) for each card X to the knowledge base. This can helpful in finding the hidden gem in the second method that was described earlier. <br>
- The second type of inference can be made if the first list and the third list combined contain 7 gem cards in total. This means that every card for which agent _a_ has held it for possible that player _p_ might own it, must be owned by _p_. Therefore every card X in the third list can be transferred to the first list, by adding K<sub>a</sub>(K<sub>p</sub>(X)) for each card X to the knowledge base. Furthermore, for every other player _p'_ it is now known that he does not have these cards, so for each player _p'_ for each card X,  K<sub>a</sub>(&#172;K<sub>p'</sub>(X)) can be added to the knowledge base.
+ The second type of inference can be made if the first list and the third list combined contain 7 gem cards in total. This means that every card for which agent _a_ has held it for possible that player _p_ might own it, must be owned by _p_. Therefore every card X in the third list can be transferred to the first list, by adding K<sub>a</sub>(K<sub>p</sub>(X)) for each card X to the knowledge base. Furthermore, for every other player _p'_ it is now known that he does not have these cards, so for each player _p'_ for each card X,  K<sub>a</sub>(&#172;K<sub>p'</sub>(X)) can be added to the knowledge base.<br>
+ If an agent was able to infer new knowledge about some players, it gets the opportunity to use this new knowledge to try to infer more new knowledge about every player.
   
 ## Simulator
 Down below you can use the Sleuth Simulator online. This does require Java to be installed and supported on the web browser that you are using. Alternatively, you can download the simulator here. To run the application, Java must be installed on your system, after which you can simply double click the .jar file.<br>
@@ -45,34 +51,6 @@ Additionally, the avatars of the other player, whose turn it currently is not, a
 You can use the [editor on GitHub](https://github.com/RichardElderman/Sleuth/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
 
 Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
-
-### Markdown
-
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
-
-```markdown
-Syntax highlighted code block
-
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
-```
-
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/RichardElderman/Sleuth/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
 
 ### Support or Contact
 

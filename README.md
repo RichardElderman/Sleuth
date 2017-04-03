@@ -24,25 +24,35 @@ Additionally, all of the cards that the player does not know for certain, he or 
 The agents make use of a number of reasoning strategies in the simulation. The reasoning can be divided into three types: reasoning about what the hidden gem might be, reasoning about what Question-Card to use and who to ask the question to, and the inference of new knowledge based on previous information.
 
 1. Finding the hidden gem:
+
  There are two ways for the agent to know what the hidden gem is. The first, and most obvious way is to know all of the other cards that are in the game. If the agent knows all of the cards that are in the game, it will only hold one card for possible, which is the hidden gem.
+ 
  Another way for the agent to figure out what the hidden gem is, is to go through all of the cards it holds for possible and check whether the other agents know about these cards. If there is a card that the agent holds for possible and the agent knows that none of the other agents know about the card, it must be the hidden gem. 
 2. Asking Questions:
+
  Selecting the best question consists of finding the best possible combination of a Question-Card and a player to ask the question to. The main strategy that the agents use is to select a Question-Card and player such that it maximizes the potential gain of knowledge. The agent will determine a score for each Question-Card and player combination, based on how much new potential knowledge this combination can yield. For example, if the agent does not know a lot of Red Gem-Cards yet, and he also has little knowledge about the Gem-Cards of Player 2, this combination of asking Player 2 about his or her Red cards has a high value.
+ 
  Another reason for selecting a Question-Card and player is to follow a lead. If a particular Gem-Card is still unknown by the agent, and it knows that a couple of other players do not know the card either, there is a good chance that this Gem-Card is the hidden gem. Therefore the agent can decide to follow this lead by asking the players that could posses the card a question that would reveal whether or not they have it. If they don't, the card must be the hidden gem.
 3. Inferring new knowledge
+
   An agent _a_ can infer new knowledge from its current knowledge in two ways. The agent that has just asked a question and received an answer, and thus has some new knowledge, has the opportunity to infer more knowledge at the end of his turn. This possible extra knowledge could lead the agent to know the hidden gem.
+  
  Both ways to infer new knowledge use the fact that each player has exactly 7 cards in his hand. Using the knowledge the agent has about a player, he can make for a player _p_ three lists of gemcards: 
-  - a list of gemcards of which he knows player _p_ has them
-  - a list of gemcards of which he knows player _p_ does not have them (since he knows other players have the cards)
-  - a list of gemcards of which he does not know if player _p_ has them, so it is possible that the player has these cards
+    - a list of gemcards of which he knows player _p_ has them
+    - a list of gemcards of which he knows player _p_ does not have them (since he knows other players have the cards)
+    - a list of gemcards of which he does not know if player _p_ has them, so it is possible that the player has these cards
  
- The first inference can be made if the first list contains 7 gemcards. This means that agent _a_ knows all cards that player _p_ has, and none of the cards in list three (the possible cards) can in fact be owned by player _p_. Therefore he can transfer every card X from the third list to the second list, by adding for each card X K<sub>a</sub>(&#172;K<sub>p</sub>(X)) to the knowledge base .
+ The first inference can be made if the first list contains 7 gemcards. This means that agent _a_ knows all cards that player _p_ has, and none of the cards in list three (the possible cards) can in fact be owned by player _p_. Therefore he can transfer every card X from the third list to the second list, by adding for each card X K<sub>a</sub>(&#172;K<sub>p</sub>(X)) to the knowledge base.
+ 
  The second inference can be made if the first list and the third list contain 7 gem cards in total. This means that every card for which it is held for possible that player _p_ owns it, must be owned by _p_. Therefore every card X in the third list can be transferred to the first list, by adding for each card X K<sub>a</sub>(K<sub>p</sub>(X)) to the knowledge base. Furthermore, for every other player _p'_ it is now known that he does not have these cards, so for each player _p'_ for each card X K<sub>a</sub>(&#172;K<sub>p'</sub>(X)) can be added to the knowledge base.
   
 ### Simulator
 Down below you can use the Sleuth Simulator online. This does require Java to be installed and supported on the web browser that you are using. Alternatively, you can download the simulator here. To run the application, Java must be installed on your system, after which you can simply double click the .jar file.
+
 When you start the simulator, a Graphical User Interface will display the current information about the game. On the bottom left, the avatar of the current player is displayed along with his Gem-Cards on the bottom. On the left side of this avatar, his or her question cards are displayed. Both the Gem-Cards and the Question-Cards are represented in the following way: The color of the card represents the color of the gem (white indicates no color is specified), the letters indicate the type of gem (Diamond, Opal or Pearl) and the number indicates the quantity (Solitaire, Pair or Cluster). The free choice Question-Cards are represented by a question mark.
+
 On the right of the avatar of the current player, the score sheet of this player is shown. The score sheet is used to mark off all of the gems that the player knows are not the hidden gem. Below this score sheet, we can see the knowledge base of the current player containing all of the knowledge as described in the model section. The dialogue box, all the way on the right of the screen, displays all of the dialogue between the players. The button underneath the dialogue box is used to move to the next stage of the game.
+
 Additionally, the avatars of the other player, whose turn it currently is not, are shown on the top of the interface. Underneath each of the avatars is a button that will display the knowledge base (KB) of the respective player. On the left of each player, his or her Gem-Cards are shown from the perspective of the current player.
 [Link to download the simulator](http://lmgtfy.com/?q=sleuth+simulator+download)
   

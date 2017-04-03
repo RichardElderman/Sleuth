@@ -43,11 +43,7 @@ Another reason for selecting a Question-Card and player is to follow a lead. If 
 ## Simulator
 By clicking [**this link**](http://i.imgur.com/0tykmxD.gif) you can download our Sleuth Simulator. To run the application, Java must be installed on your system, after which you can simply double click the .jar file. <br> <br>
 
-
 ![Screenshot](screenshot.png)
-
-<br><br>
-
 
 When you start the simulator, a Graphical User Interface like the one shown above will display the current information about the game. On the bottom left, the avatar of the current player is displayed along with his Gem-Cards on the bottom. On the left side of this avatar, his or her question cards are displayed. Both the Gem-Cards and the Question-Cards are represented in the following way: The color of the card represents the color of the gem (white indicates no color is specified), the letters indicate the type of gem (Diamond, Opal or Pearl) and the number indicates the quantity (Solitaire, Pair or Cluster). The free choice Question-Cards are represented by a question mark.<br><br>
 On the right of the avatar of the current player, the score sheet of this player is shown. The score sheet is used to mark off all of the gems that the player knows are not the hidden gem. Below this score sheet, we can see the knowledge base of the current player containing all of the knowledge as described in the model section. The dialogue box, all the way on the right of the screen, displays all of the dialogue between the players. The button underneath the dialogue box is used to move to the next stage of the game.<br><br>

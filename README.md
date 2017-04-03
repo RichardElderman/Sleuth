@@ -41,7 +41,7 @@ Another reason for selecting a Question-Card and player is to follow a lead. If 
  If an agent was able to infer new knowledge about some players, it gets the opportunity to use this new knowledge to try to infer more new knowledge about every player.
   
 ## Simulator
-By clicking [**this link**](http://i.imgur.com/0tykmxD.gif) you can download our Sleuth Simulator. To run the application, Java must be installed on your system, after which you can simply double click the .jar file. <br> <br>
+By clicking [**this link**](http://i.imgur.com/0tykmxD.gif) you can download our Sleuth Simulator. To run the application, Java must be installed on your system, after which you can simply double click the .jar file. 
 
 ![Screenshot](screenshot.png)
 

@@ -1,4 +1,8 @@
-## Welcome to GitHub Pages
+## Welcome to ...
+
+This website contains information about a Simulator of the logical deduction card-game Sleuth. This is a project for the Multi-Agent Systems course of 2016/2017. 
+
+The application that we wrote can simulate a game of Sleuth with five AI Agents that play the game. The model of the game is based on S5 logic system and the agents will use their knowledge about the world and the knowledge of other agents to make decisions and win the game. The goal of this simulation is to show how the knowledge of the agents lead to the decisions that they make and how they use the information to alter their strategy. 
 
 You can use the [editor on GitHub](https://github.com/RichardElderman/Sleuth/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
 

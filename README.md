@@ -29,6 +29,7 @@ The agents make use of a number of reasoning strategies in the simulation. The r
  - a list of gemcards of which he knows player _p_ has them
  - a list of gemcards of which he knows player _p_ does not have them (since he knows other players have the cards)
  - a list of gemcards of which he does not know if player _p_ has them, so it is possible that the player has these cards
+ 
  The first inference can be made if the first list contains 7 gemcards. This means that agent _a_ knows all cards that player _p_ has, and none of the cards in list three (the possible cards) can in fact be owned by player _p_. Therefore he can transfer every card X from the third list to the second list, by adding K<sub>a</sub>(&#172;K<sub>p</sub>(X)) for each card X to the knowledge base.<br>
  The second inference can be made if the first list and the third list contain 7 gem cards in total. This means that every card for which it is held for possible that player _p_ owns it, must be owned by _p_. Therefore every card X in the third list can be transferred to the first list, by adding K<sub>a</sub>(K<sub>p</sub>(X)) for each card X to the knowledge base. Furthermore, for every other player _p'_ it is now known that he does not have these cards, so for each player _p'_ for each card X,  K<sub>a</sub>(&#172;K<sub>p'</sub>(X)) can be added to the knowledge base.
   
